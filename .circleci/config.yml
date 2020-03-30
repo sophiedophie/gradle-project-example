@@ -1,0 +1,21 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/android:api-29
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          name: Set environment variable to export
+          command: |
+            echo 'export TEST_VAR=<< pipeline.number >>' >> $BASH_ENV
+      - run:
+          name: Try Gradlew
+          command: ./complete/gradlew sophie_test
+
+workflows:
+  start_build:
+    jobs:
+      - build
