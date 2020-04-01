@@ -6,5 +6,6 @@
  */
 
 task sophie_test() {
+  println "====== [sophie test] following is the env var ========"
   println System.getenv("TEST_VAR")
 }
